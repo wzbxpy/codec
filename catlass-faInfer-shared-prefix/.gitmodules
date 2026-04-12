@@ -1,0 +1,4 @@
+[submodule "3rdparty/googletest"]
+	path = 3rdparty/googletest
+	url = https://gitcode.com/GitHub_Trending/go/googletest.git
+	branch = v1.14.x
