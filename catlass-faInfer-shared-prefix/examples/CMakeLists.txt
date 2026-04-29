@@ -78,7 +78,7 @@ macro(catlass_example_add_executable NAME OPTYPE)
     target_compile_options(${NAME} PRIVATE $<$<COMPILE_LANGUAGE:ASCEND>:--cce-aicore-arch=${CCE_AICORE_ARCH}>)
     target_compile_definitions(${NAME} PRIVATE CATLASS_EXAMPLE_NAME=${NAME})
     target_include_directories(${NAME} PRIVATE ${ASCEND_HOME_PATH}/include/aclnn)
-    
+
     # compile options for msSanitizer
     if(DEFINED ENABLE_MSSANITIZER AND ENABLE_MSSANITIZER)
         target_compile_options(${NAME} PRIVATE "SHELL:$<$<COMPILE_LANGUAGE:ASCEND>:-g --cce-enable-sanitizer>")
@@ -107,61 +107,7 @@ link_libraries(ascend_hal)
 
 # regular examples
 set(EXAMPLE_ATLASA2
-    00_basic_matmul
-    01_batched_matmul
-    02_grouped_matmul_slice_m
-    03_matmul_add
-    04_padding_matmul
-    05_grouped_matmul_slice_k
-    06_optimized_matmul
-    07_grouped_matmul_slice_m_per_token_dequant_moe
-    08_grouped_matmul
-    09_splitk_matmul
-    10_grouped_matmul_slice_m_per_token_dequant
-    11_grouped_matmul_slice_k_per_token_dequant
-    12_quant_matmul
-    13_basic_matmul_tla
-    14_optimized_matmul_tla
-    15_gemm
-    16_group_gemm
-    17_gemv_aiv
-    18_gemv_aic
-    19_mla
-    20_matmul_bias
-    21_basic_matmul_preload_zN
-    22_padding_splitk_matmul
-    23_flash_attention_infer
-    24_conv_bias
-    25_matmul_full_loadA
-    26_matmul_relu
-    27_matmul_gelu
-    28_matmul_silu
-    29_a2_fp8_e4m3_matmul
-    30_w8a16_matmul
-    31_small_matmul
-    32_w4a8_matmul
-    33_basic_conv2d
-    34_single_core_splitk_matmul
-    37_streamk_matmul
-    38_w4a4_matmul_per_token_per_channel_dequant
-    39_big_matmul_tla
-    40_flash_attention_infer_tla
-    41_sparse_matmul_tla
-    42_quant_optimized_matmul_tla
-    44_quant_matmul_full_loadA_tla
-    45_strided_batched_matmul_tla
-    102_dynamic_optimized_matmul
-    103_dynamic_optimized_quant_matmul_per_token_basic
-)
-
-set(EXAMPLE_ASCEND950
-    43_ascend950_basic_matmul
-    46_ascend950_matmul_fixpipe_opti
-    47_ascend950_grouped_matmul_slice_m_per_token_dequant
-    48_ascend950_grouped_matmul_slice_m_per_tensor_per_channel_dequant
-    49_ascend950_flash_attention_infer
-    50_ascend950_basic_matmul_gemv
-    51_ascend950_quant_matmul_per_group_per_block_tla
+    flash_attention_infer_tla
 )
 
 if(CATLASS_ARCH STREQUAL "2201")
@@ -175,6 +121,6 @@ foreach(EXAMPLE ${EXAMPLE_LIST})
 endforeach()
 
 # advanded examples
-add_subdirectory(shared_lib)
-add_subdirectory(python_extension)
-add_subdirectory(advanced/basic_matmul_aclnn)
+# add_subdirectory(shared_lib)
+# add_subdirectory(python_extension)
+# add_subdirectory(advanced/basic_matmul_aclnn)
